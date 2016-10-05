@@ -2,13 +2,16 @@ app.reddit = (function () {
   var
     configMap = {
       template_html:  '<div class="container">' +
-                        '<div class="panel panel-default">' +
-                          '<div class="panel-heading">Reddit Javascript Posts</div>' +
-                          '<div class="panel-body">' +
-                            '<div class="row">' +
-                              '<div class="container">' +
-                                '<button type="button" class="btn btn-primary app-reddit-get-button">Get</button>' +
-                                '<button type="button" class="btn btn-default app-reddit-clear-button">Clear</button>' +
+                        '<div class="form">' +
+                          '<div class="row">' +
+                            '<div class="form-group">' +
+                              '<div class="input-group">' +
+                                '<span class="input-group-addon">Https://www.reddit.com/r/</span>' +
+                                '<input type="text" class="form-control">' +
+                                '<div class="input-group-btn">' +
+                                  '<button type="button" class="btn btn-primary app-reddit-get-button">Get</button>' +
+                                  '<button type="button" class="btn btn-default app-reddit-clear-button">Clear</button>' +
+                                '</div>' +
                               '</div>' +
                             '</div>' +
                           '</div>' +
@@ -55,8 +58,7 @@ app.reddit = (function () {
   
   getPosts = function () {
     $.ajax({
-      url: configMap.posts_url,
-      dataType: 'json'
+      url: configMap.posts_url
     }).done( setPosts );
   };
   
