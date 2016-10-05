@@ -87,9 +87,10 @@ app.reddit = (function () {
     $container.append( configMap.template_html );
     setJqueryMap();
     bindEvents();
-  };
+  };d
   
   return {
-    initModule: initModule
+    initModule: initModule,
+    stateMap: stateMap
   };
 }());
