@@ -5,7 +5,7 @@ app.reddit = (function () {
                         '<div class="form">' +
                           '<div class="row">' +
                             '<div class="form-group">' +
-                              '<div class="input-group">' +
+                              '<div class="input-group app-reddit-input-group">' +
                                 '<span class="input-group-addon">https://www.reddit.com/r/</span>' +
                                 '<input type="text" class="form-control app-reddit-input">' +
                                 '<div class="input-group-btn">' +
@@ -34,16 +34,17 @@ app.reddit = (function () {
                         '</div>' +
                       '<div>',
       base_url: 'https://www.reddit.com/r/',
-      default_data_type: 'json'
+      data_type: 'json'
     },
     stateMap = {
-      $container: null,
-      full_url: null,
-      return_data: null,
-      reddit_text: null
+      $container:   null,
+      full_url:     null,
+      post_list:    null,
+      return_data:  null,
+      reddit_text:  null
     },
-    jqueryMap = {}, onGetClick,
-    bindEvents, getPosts, setPosts, clearPosts,
+    jqueryMap = {}, onGetClick, onClearClick,
+    bindEvents, getPosts, setPosts, onRedditFocusOut,
     setJqueryMap, initModule;
   
   setJqueryMap = function () {
@@ -56,7 +57,8 @@ app.reddit = (function () {
         $clear_button:  $container.find( '.app-reddit-clear-button' ),
         $table_header:  $container.find( '.app-reddit-table-header' ),
         $table_body:    $container.find( '.app-reddit-table-body' ),
-        $reddit_input:  $container.find( '.app-reddit-input' )
+        $reddit_input:  $container.find( '.app-reddit-input' ),
+        $input_group:   $container.find( '.app-reddit-input-group' )
       };
   };
 
@@ -67,8 +69,8 @@ app.reddit = (function () {
   };
   
   setPosts = function ( res ) {
-    stateMap.posts = res.data.children;
-    stateMap.posts.forEach(function ( o ) {
+    stateMap.post_list = res.data.children;
+    stateMap.post_list.forEach(function ( o ) {
       var
         post = o.data,
         table_row;
@@ -79,20 +81,27 @@ app.reddit = (function () {
     });
   };
   
-  clearPosts = function () {
+  onClearClick = function () {
     jqueryMap.$table_body.empty();
   };
 
   onGetClick = function () {
+    if (stateMap.reddit_text ) {
+      stateMap.full_url = configMap.base_url +
+        stateMap.reddit_text + '.' + configMap.data_type;
+      getPosts();
+    }
+  };
+
+  onRedditFocusOut = function () {
     stateMap.reddit_text = jqueryMap.$reddit_input.val();
-    stateMap.full_url = configMap.base_url +
-      stateMap.reddit_text + '.' + configMap.default_data_type;
-    getPosts();
+    jqueryMap.$input_group.toggleClass('has-error', !stateMap.reddit_text);
   };
   
   bindEvents = function () {
     jqueryMap.$get_button.click( onGetClick );
-    jqueryMap.$clear_button.click( clearPosts );
+    jqueryMap.$clear_button.click( onClearClick );
+    jqueryMap.$reddit_input.focusout( onRedditFocusOut );
   };
   
   initModule = function ( $container ) {
