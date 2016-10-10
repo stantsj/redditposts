@@ -1,39 +1,40 @@
 app.reddit = (function () {
   var
     configMap = {
-      template_html:  '<div class="container app-reddit">' +
-                        '<div class="form">' +
-                          '<div class="row">' +
-                            '<div class="form-group">' +
-                              '<div class="input-group app-reddit-input-group">' +
-                                '<span class="input-group-addon">https://www.reddit.com/r/</span>' +
-                                '<input type="text" class="form-control app-reddit-input">' +
-                                '<div class="input-group-btn">' +
-                                  '<button type="button" class="btn btn-primary app-reddit-get-button">Get</button>' +
-                                  '<button type="button" class="btn btn-default app-reddit-clear-button">Clear</button>' +
-                                '</div>' +
-                              '</div>' +
-                            '</div>' +
-                          '</div>' +
-                        '</div>' +
-                        '<div class="row">' +
-                          '<div class="container">' +
-                            '<div class="table-responsive">' +
-                              '<table class="table table-striped">' +
-                                '<thead>' +
-                                  '<tr class="app-reddit-table-header">' +
-                                    '<th>Title</th>' +
-                                    '<th>Author</th>' +
-                                    '<th>URL</th>' +
-                                  '</tr>' +
-                                '</thead>' +
-                                '<tbody class="app-reddit-table-body">' +
-                                '</tbody>' +
-                              '</table>' +
-                            '</div>' +
-                          '</div>' +
-                        '</div>' +
-                      '<div>',
+      main_html: string() +
+        '<div class="container app-reddit">' +
+          '<div class="form">' +
+            '<div class="row">' +
+              '<div class="form-group">' +
+                '<div class="input-group app-reddit-input-group">' +
+                  '<span class="input-group-addon">https://www.reddit.com/r/</span>' +
+                  '<input type="text" class="form-control app-reddit-input">' +
+                  '<div class="input-group-btn">' +
+                    '<button type="button" class="btn btn-primary app-reddit-get-button">Get</button>' +
+                    '<button type="button" class="btn btn-default app-reddit-clear-button">Clear</button>' +
+                  '</div>' +
+                '</div>' +
+              '</div>' +
+            '</div>' +
+          '</div>' +
+          '<div class="row">' +
+            '<div class="container">' +
+              '<div class="table-responsive">' +
+                '<table class="table table-striped">' +
+                  '<thead>' +
+                    '<tr class="app-reddit-table-header">' +
+                      '<th>Title</th>' +
+                      '<th>Author</th>' +
+                      '<th>URL</th>' +
+                    '</tr>' +
+                  '</thead>' +
+                  '<tbody class="app-reddit-table-body">' +
+                  '</tbody>' +
+                '</table>' +
+              '</div>' +
+            '</div>' +
+          '</div>' +
+        '<div>',
       base_url: 'https://www.reddit.com/r/',
       data_type: 'json'
     },
@@ -116,7 +117,7 @@ app.reddit = (function () {
     $container.append( configMap.template_html );
     setJqueryMap();
     bindEvents();
-  };d
+  };
   
   return {
     initModule: initModule,
