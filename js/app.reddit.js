@@ -1,17 +1,17 @@
-app.reddit = (function () {
+spa.reddit = (function () {
   var
     configMap = {
-      main_html: string() +
-        '<div class="container app-reddit">' +
+      main_html: String() +
+        '<div class="container spa-reddit">' +
           '<div class="form">' +
             '<div class="row">' +
               '<div class="form-group">' +
-                '<div class="input-group app-reddit-input-group">' +
+                '<div class="input-group spa-reddit-input-group">' +
                   '<span class="input-group-addon">https://www.reddit.com/r/</span>' +
-                  '<input type="text" class="form-control app-reddit-input">' +
+                  '<input type="text" class="form-control spa-reddit-input">' +
                   '<div class="input-group-btn">' +
-                    '<button type="button" class="btn btn-primary app-reddit-get-button">Get</button>' +
-                    '<button type="button" class="btn btn-default app-reddit-clear-button">Clear</button>' +
+                    '<button type="button" class="btn btn-primary spa-reddit-get-button">Get</button>' +
+                    '<button type="button" class="btn btn-default spa-reddit-clear-button">Clear</button>' +
                   '</div>' +
                 '</div>' +
               '</div>' +
@@ -22,13 +22,13 @@ app.reddit = (function () {
               '<div class="table-responsive">' +
                 '<table class="table table-striped">' +
                   '<thead>' +
-                    '<tr class="app-reddit-table-header">' +
+                    '<tr class="spa-reddit-table-header">' +
                       '<th>Title</th>' +
                       '<th>Author</th>' +
                       '<th>URL</th>' +
                     '</tr>' +
                   '</thead>' +
-                  '<tbody class="app-reddit-table-body">' +
+                  '<tbody class="spa-reddit-table-body">' +
                   '</tbody>' +
                 '</table>' +
               '</div>' +
@@ -56,12 +56,12 @@ app.reddit = (function () {
     
       jqueryMap = {
         $container:     $container,
-        $get_button:    $container.find( '.app-reddit-get-button' ),
-        $clear_button:  $container.find( '.app-reddit-clear-button' ),
-        $table_header:  $container.find( '.app-reddit-table-header' ),
-        $table_body:    $container.find( '.app-reddit-table-body' ),
-        $reddit_input:  $container.find( '.app-reddit-input' ),
-        $input_group:   $container.find( '.app-reddit-input-group' )
+        $get_button:    $container.find( '.spa-reddit-get-button' ),
+        $clear_button:  $container.find( '.spa-reddit-clear-button' ),
+        $table_header:  $container.find( '.spa-reddit-table-header' ),
+        $table_body:    $container.find( '.spa-reddit-table-body' ),
+        $reddit_input:  $container.find( '.spa-reddit-input' ),
+        $input_group:   $container.find( '.spa-reddit-input-group' )
       };
   };
 
@@ -114,7 +114,7 @@ app.reddit = (function () {
   
   initModule = function ( $container ) {
     stateMap.$container = $container;
-    $container.append( configMap.template_html );
+    $container.append( configMap.main_html );
     setJqueryMap();
     bindEvents();
   };
