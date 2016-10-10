@@ -24,6 +24,7 @@ app.reddit = (function () {
                                   '<tr class="app-reddit-table-header">' +
                                     '<th>Title</th>' +
                                     '<th>Author</th>' +
+                                    '<th>URL</th>' +
                                   '</tr>' +
                                 '</thead>' +
                                 '<tbody class="app-reddit-table-body">' +
@@ -43,7 +44,8 @@ app.reddit = (function () {
       return_data:  null,
       reddit_text:  null
     },
-    jqueryMap = {}, onGetClick, onClearClick,
+    jqueryMap = {},
+    onGetClick, onClearClick,
     bindEvents, getPosts, setPosts, onRedditFocusOut,
     setJqueryMap, initModule;
   
@@ -69,13 +71,18 @@ app.reddit = (function () {
   };
   
   setPosts = function ( res ) {
+    jqueryMap.$table_body.empty();
     stateMap.post_list = res.data.children;
     stateMap.post_list.forEach(function ( o ) {
       var
         post = o.data,
         table_row;
       
-      table_row = '<tr><td>' + post.title + '</td><td>' + post.author + '</td></tr>';
+      table_row = '<tr>' +
+                    '<td>' + post.title + '</td>' +
+                    '<td>' + post.author + '</td>' +
+                    '<td>' + post.url + '</td>' +
+                  '</tr>';
       
       jqueryMap.$table_body.append( table_row );
     });
@@ -86,7 +93,7 @@ app.reddit = (function () {
   };
 
   onGetClick = function () {
-    if (stateMap.reddit_text ) {
+    if ( stateMap.reddit_text ) {
       stateMap.full_url = configMap.base_url +
         stateMap.reddit_text + '.' + configMap.data_type;
       getPosts();
