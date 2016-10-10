@@ -4,7 +4,6 @@
 var app = (function ( $ ) {
   var initModule = function ( $container ) {
     app.reddit.initModule( $container );
-
   };
   return { initModule: initModule }
 }( jQuery ));
