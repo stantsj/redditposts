@@ -2,39 +2,37 @@ spa.reddit = (function () {
   var
     configMap = {
       main_html: String() +
-        '<div class="container spa-reddit">' +
-          '<div class="form">' +
-            '<div class="row">' +
-              '<div class="form-group">' +
-                '<div class="input-group spa-reddit-input-group">' +
-                  '<span class="input-group-addon">https://www.reddit.com/r/</span>' +
-                  '<input type="text" class="form-control spa-reddit-input">' +
-                  '<div class="input-group-btn">' +
-                    '<button type="button" class="btn btn-primary spa-reddit-get-button">Get</button>' +
-                    '<button type="button" class="btn btn-default spa-reddit-clear-button">Clear</button>' +
-                  '</div>' +
+        '<div class="form">' +
+          '<div class="row">' +
+            '<div class="form-group">' +
+              '<div class="input-group spa-reddit-input-group">' +
+                '<span class="input-group-addon">https://www.reddit.com/r/</span>' +
+                '<input type="text" class="form-control spa-reddit-input">' +
+                '<div class="input-group-btn">' +
+                  '<button type="button" class="btn btn-primary spa-reddit-get-button">Get</button>' +
+                  '<button type="button" class="btn btn-default spa-reddit-clear-button">Clear</button>' +
                 '</div>' +
               '</div>' +
             '</div>' +
           '</div>' +
-          '<div class="row">' +
-            '<div class="container">' +
-              '<div class="table-responsive">' +
-                '<table class="table table-striped">' +
-                  '<thead>' +
-                    '<tr class="spa-reddit-table-header">' +
-                      '<th>Title</th>' +
-                      '<th>Author</th>' +
-                      '<th>URL</th>' +
-                    '</tr>' +
-                  '</thead>' +
-                  '<tbody class="spa-reddit-table-body">' +
-                  '</tbody>' +
-                '</table>' +
-              '</div>' +
+        '</div>' +
+        '<div class="row">' +
+          '<div class="container">' +
+            '<div class="table-responsive">' +
+              '<table class="table table-striped">' +
+                '<thead>' +
+                  '<tr class="spa-reddit-table-header">' +
+                    '<th>Title</th>' +
+                    '<th>Author</th>' +
+                    '<th>URL</th>' +
+                  '</tr>' +
+                '</thead>' +
+                '<tbody class="spa-reddit-table-body">' +
+                '</tbody>' +
+              '</table>' +
             '</div>' +
           '</div>' +
-        '<div>',
+        '</div>',
       base_url: 'https://www.reddit.com/r/',
       data_type: 'json'
     },
@@ -114,7 +112,7 @@ spa.reddit = (function () {
   
   initModule = function ( $container ) {
     stateMap.$container = $container;
-    $container.append( configMap.main_html );
+    $container.html( configMap.main_html );
     setJqueryMap();
     bindEvents();
   };
